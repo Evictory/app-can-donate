@@ -11,3 +11,14 @@ export const LineItens = styled.View`
   height: 140px;
   margin-bottom: 10px;
 `;
+
+export const ImageContainer = styled.View`
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+`;
+
+export const CardImage = styled.Image`
+  height: 90px;
+  width: 90px;
+`;
