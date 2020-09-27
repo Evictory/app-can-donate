@@ -8,4 +8,6 @@ export const Container = styled.View`
 
 export const LineItens = styled.View`
   flex-direction: row;
+  height: 140px;
+  margin-bottom: 10px;
 `;

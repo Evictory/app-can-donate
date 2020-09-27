@@ -19,6 +19,11 @@ const WhoCanDonate: React.FC = () => {
       brotherImage: 'Image later',
       imageSide: 'right',
     },
+    {
+      description: 'Juao Ipson',
+      brotherImage: 'Image later',
+      imageSide: 'right',
+    },
   ];
   return (
     <>
@@ -35,7 +40,9 @@ const WhoCanDonate: React.FC = () => {
           );
         })}
       </Container>
-      <NavButton onPress={() => navigation.navigate('Home')}>Home</NavButton>
+      <NavButton onPress={() => navigation.navigate('Home')}>
+        Como faço para doar?
+      </NavButton>
     </>
   );
 };
