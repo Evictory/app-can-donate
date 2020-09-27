@@ -37,9 +37,12 @@ const WhoCanDonate: React.FC = () => {
             return (
               <>
                 <LineItens key={item.description}>
-                  <CardInfo>{item.description}</CardInfo>
+                  <CardInfo key={item.description}>{item.description}</CardInfo>
                   <ImageContainer key={item.brotherImage}>
-                    <CardImage source={item.brotherImage} />
+                    <CardImage
+                      key={item.brotherImage}
+                      source={item.brotherImage}
+                    />
                   </ImageContainer>
                 </LineItens>
               </>
@@ -49,16 +52,19 @@ const WhoCanDonate: React.FC = () => {
               <>
                 <LineItens key={item.description}>
                   <ImageContainer key={item.brotherImage}>
-                    <CardImage source={item.brotherImage} />
+                    <CardImage
+                      key={item.brotherImage}
+                      source={item.brotherImage}
+                    />
                   </ImageContainer>
-                  <CardInfo>{item.description}</CardInfo>
+                  <CardInfo key={item.description}>{item.description}</CardInfo>
                 </LineItens>
               </>
             );
           }
         })}
       </Container>
-      <NavButton onPress={() => navigation.navigate('Home')}>
+      <NavButton onPress={() => navigation.navigate('IwantToDonate')}>
         Como faço para doar?
       </NavButton>
     </>

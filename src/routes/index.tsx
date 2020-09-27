@@ -13,7 +13,17 @@ const Stack = createStackNavigator();
 
 const Routes: React.FC = () => {
   return (
-    <Stack.Navigator initialRouteName="WhoCanDonate">
+    <Stack.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#C7141A',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }}>
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Links" component={Links} />
       <Stack.Screen name="Contact" component={Contact} />
