@@ -9,7 +9,6 @@ interface ButtonProps extends RectButtonProperties {
 const NavButton: React.FC<ButtonProps> = ({ children, ...rest }) => {
   return (
     <Container {...rest}>
-      {/* <IconItem>{icon}</IconItem> */}
       <TextButton>{children}</TextButton>
     </Container>
   );
