@@ -28,27 +28,22 @@ const IwantToDonate: React.FC = () => {
     {
       description: 'Lorem Ipson',
       step: 1,
-      imageSide: 'right',
     },
     {
       description: 'Juao Ipson',
       step: 2,
-      imageSide: 'left',
     },
     {
       description: 'Juao asdsa',
       step: 3,
-      imageSide: 'right',
     },
     {
       description: 'Juao sss',
       step: 4,
-      imageSide: 'left',
     },
     {
       description: 'Juao dddd',
       step: 5,
-      imageSide: 'right',
     },
   ];
 
