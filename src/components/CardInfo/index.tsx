@@ -2,10 +2,10 @@ import React from 'react';
 
 import { Container, CardText } from './styles';
 
-const CardInfo: React.FC = ({ children }) => {
+const CardInfo: React.FC = ({ children, ...rest }) => {
   return (
-    <Container>
-      <CardText>{children}</CardText>
+    <Container {...rest}>
+      <CardText {...rest}>{children}</CardText>
     </Container>
   );
 };
