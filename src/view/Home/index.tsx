@@ -1,10 +1,8 @@
 import React from 'react';
-import { Container } from './styles';
 import { useNavigation } from '@react-navigation/native';
 
 import NavButton from '../../components/NavButton';
-
-import { Text } from 'react-native';
+import { Container, Text } from './styles';
 
 const IwantDonate: React.FC = () => {
   const navigation = useNavigation();
@@ -12,7 +10,9 @@ const IwantDonate: React.FC = () => {
   return (
     <Container>
       <Text>Olá! Estamos aqui para ajudar</Text>
-      <NavButton onPress={() => navigation.navigate('Links')}>
+      <NavButton
+        style={{ height: 100 }}
+        onPress={() => navigation.navigate('Links')}>
         Vamos lá!
       </NavButton>
     </Container>
