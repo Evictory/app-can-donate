@@ -37,8 +37,18 @@ const IwantToDonate: React.FC = () => {
       imageSide: 'left',
     },
     {
-      description: 'Juao sadsa',
+      description: 'Juao asdsa',
       step: 3,
+      imageSide: 'right',
+    },
+    {
+      description: 'Juao sss',
+      step: 4,
+      imageSide: 'left',
+    },
+    {
+      description: 'Juao dddd',
+      step: 5,
       imageSide: 'right',
     },
   ];
