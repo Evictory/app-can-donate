@@ -2,10 +2,10 @@ import React from 'react';
 
 import { Container, Text } from './styles';
 
-const Title: React.FC = ({ children }) => {
+const Title: React.FC = ({ children, ...rest }) => {
   return (
-    <Container>
-      <Text>{children}</Text>
+    <Container {...rest}>
+      <Text {...rest}>{children}</Text>
     </Container>
   );
 };
