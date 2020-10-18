@@ -1,4 +1,5 @@
 import React from 'react';
+import { FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import HeartSmile from '../../assets/HeartSmile.png';
 
@@ -15,6 +16,13 @@ import {
   CardInfoWhite,
 } from './styles';
 
+// interface InfoMessages {
+//   description: string;
+//   step: number;
+//   imageSide: string;
+// }
+//verify a way to render changing position's cards
+
 const IwantToDonate: React.FC = () => {
   const navigation = useNavigation();
   const infoMessages = [
@@ -29,11 +37,26 @@ const IwantToDonate: React.FC = () => {
       imageSide: 'left',
     },
     {
-      description: 'Juao Ipson',
+      description: 'Juao sadsa',
       step: 3,
       imageSide: 'right',
     },
   ];
+
+  const renderLine = ({ item }: any) => {
+    return (
+      <>
+        <LineItens key={item.description}>
+          <CardInfoWhite key={item.description}>
+            {item.description}
+          </CardInfoWhite>
+          <StepInfo key={item.step}>
+            <StepText key={item.step}>{item.step} º passo</StepText>
+          </StepInfo>
+        </LineItens>
+      </>
+    );
+  };
   return (
     <>
       <Container>
@@ -42,35 +65,11 @@ const IwantToDonate: React.FC = () => {
           <CardImage source={HeartSmile} />
         </StepInfo>
         <SecondaryTitle>Veja só como é fácil ser doador</SecondaryTitle>
-        {infoMessages.map((item) => {
-          if (item.imageSide === 'right') {
-            return (
-              <>
-                <LineItens key={item.description}>
-                  <CardInfoWhite key={item.description}>
-                    {item.description}
-                  </CardInfoWhite>
-                  <StepInfo key={item.step}>
-                    <StepText key={item.step}>{item.step} º passo</StepText>
-                  </StepInfo>
-                </LineItens>
-              </>
-            );
-          } else {
-            return (
-              <>
-                <LineItens key={item.description}>
-                  <StepInfo key={item.step}>
-                    <StepText key={item.step}>{item.step} º passo</StepText>
-                  </StepInfo>
-                  <CardInfoWhite key={item.description}>
-                    {item.description}
-                  </CardInfoWhite>
-                </LineItens>
-              </>
-            );
-          }
-        })}
+        <FlatList
+          data={infoMessages}
+          renderItem={renderLine}
+          keyExtractor={(item) => item.description}
+        />
       </Container>
       <NavButton onPress={() => navigation.navigate('LetYourContact')}>
         Deixe seu contato

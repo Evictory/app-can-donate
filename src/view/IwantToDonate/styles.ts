@@ -1,8 +1,9 @@
 import styled from 'styled-components/native';
 import Title from '../../components/Title';
 import CardInfo from '../../components/CardInfo';
+import { SafeAreaView } from 'react-native';
 
-export const Container = styled.View`
+export const Container = styled(SafeAreaView)`
   align-items: center;
   background-color: rgba(199, 20, 26, 0.5);
   flex: 1;
@@ -31,6 +32,7 @@ export const LineItens = styled.View`
   flex-direction: row;
   height: 140px;
   margin-bottom: 10px;
+  width: 300px;
 `;
 
 export const StepInfo = styled.View`
