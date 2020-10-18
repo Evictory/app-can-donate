@@ -14,7 +14,7 @@ const Stack = createStackNavigator();
 const Routes: React.FC = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Contact"
+      initialRouteName="LetYourContact"
       screenOptions={{
         headerStyle: {
           backgroundColor: '#C7141A',

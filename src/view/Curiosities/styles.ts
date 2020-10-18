@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native';
 export const Container = styled(SafeAreaView)`
   align-items: center;
   align-self: center;
+  background-color: #ffffff;
   flex: 1;
   padding: 10px;
   width: 90%;

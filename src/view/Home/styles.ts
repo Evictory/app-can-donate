@@ -3,6 +3,7 @@ import { SafeAreaView } from 'react-native';
 
 export const Container = styled(SafeAreaView)`
   align-items: center;
+  background-color: #ffffff;
   flex: 1;
 `;
 
