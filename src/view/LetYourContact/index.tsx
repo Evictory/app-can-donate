@@ -1,6 +1,6 @@
 import React from 'react';
-import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 import NavButton from '../../components/NavButton';
 import Title from '../../components/Title';
@@ -13,6 +13,8 @@ const LetYourContact: React.FC = () => {
   const [name, onChangeName] = useState('');
   const [email, onChangeEmail] = useState('');
   const [contact, onChangeContact] = useState('');
+  const [formSubitted, onSubmit] = useState('');
+
   const sendData = () => {
     let data = {
       name,
@@ -20,6 +22,15 @@ const LetYourContact: React.FC = () => {
       contact,
     };
     console.log(data);
+    onSubmit('Dados enviados com sucesso!');
+    console.log(formSubitted);
+    clearData();
+  };
+
+  const clearData = () => {
+    onChangeName('');
+    onChangeEmail('');
+    onChangeContact('');
   };
 
   return (
