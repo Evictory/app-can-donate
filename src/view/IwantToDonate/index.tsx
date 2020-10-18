@@ -21,7 +21,6 @@ import {
 //   step: number;
 //   imageSide: string;
 // }
-//verify a way to render changing position's cards
 
 const IwantToDonate: React.FC = () => {
   const navigation = useNavigation();
@@ -54,15 +53,20 @@ const IwantToDonate: React.FC = () => {
   ];
 
   const renderLine = ({ item }: any) => {
+    const card = (
+      <CardInfoWhite key={item.description}>{item.description}</CardInfoWhite>
+    );
+
+    const stepInfo = (
+      <StepInfo key={item.step}>
+        <StepText key={item.step}>{item.step} º passo</StepText>
+      </StepInfo>
+    );
+
     return (
       <>
         <LineItens key={item.description}>
-          <CardInfoWhite key={item.description}>
-            {item.description}
-          </CardInfoWhite>
-          <StepInfo key={item.step}>
-            <StepText key={item.step}>{item.step} º passo</StepText>
-          </StepInfo>
+          {item.step % 2 === 0 ? [stepInfo, card] : [card, stepInfo]}
         </LineItens>
       </>
     );
