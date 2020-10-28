@@ -5,7 +5,7 @@
     { "description": "A quantidade de doadores no brasil...", "image": "AA" },
     { "description": "Essa poderia ser engraçada", "image": "BB" }
   ],
-  "infoMessages": [
+  "infoMessagesStep": [
     {
       "description": "Lorem Ipson",
       "step": 1
