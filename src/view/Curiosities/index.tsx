@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+
+import api from '../../services/api';
+
 import NavButton from '../../components/NavButton';
 import Title from '../../components/Title';
 import CardInfo from '../../components/CardInfo';
@@ -13,12 +16,13 @@ interface Curiosity {
 
 const FAQ: React.FC = () => {
   const navigation = useNavigation();
-  const curiosities = [
-    { description: 'Sabiq eu  o eu...', image: 'hehe' },
-    { description: 'Você sabia que...', image: 'SS' },
-    { description: 'A quantidade de doadores no brasil...', image: 'AA' },
-    { description: 'Essa poderia ser engraçada', image: 'BB' },
-  ];
+  let curiosities: Curiosity[] = [];
+
+  // const getCuriosities = async () => {
+  //   const response = await api.get('/curiosities');
+  //   curiosities = response.data;
+  // };
+
   const [curiosity, setCuriosity] = useState<Curiosity>(curiosities[0]);
 
   function changeCuriosity(next: number): void {

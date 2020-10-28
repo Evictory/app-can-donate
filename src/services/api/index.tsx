@@ -1,3 +1,7 @@
-// import axios from 'axios';
+import axios from 'axios';
 
-// axios.
+const api = axios.create({
+  baseURL: 'https://my-json-server.typicode.com/Evictory/fakeAPI',
+});
+
+export default api;
