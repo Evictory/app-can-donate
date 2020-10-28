@@ -1,48 +1,11 @@
 {
-  "curiosities": [
-    { "description": "Sabiq eu  o eu...", "image": "hehe" },
-    { "description": "Você sabia que...", "image": "SS" },
-    { "description": "A quantidade de doadores no brasil...", "image": "AA" },
-    { "description": "Essa poderia ser engraçada", "image": "BB" }
-  ],
-  "infoMessagesStep": [
+  "posts": [
     {
-      "description": "Lorem Ipson",
-      "step": 1
-    },
-    {
-      "description": "Juao Ipson",
-      "step": 2
-    },
-    {
-      "description": "Juao asdsa",
-      "step": 3
-    },
-    {
-      "description": "Juao sss",
-      "step": 4
-    },
-    {
-      "description": "Juao dddd",
-      "step": 5
+      "id": 1,
+      "title": "hello"
     }
   ],
-  "userData":[],
-  "infoMessages": [
-    {
-      "description": "Lorem Ipson",
-      "brotherImage": "HeartZip",
-      "imageSide": "right",
-    },
-    {
-      "description": "Juao Ipson",
-      "brotherImage": "HeartSmile",
-      "imageSide": "left"
-    },
-    {
-      "description": "Juao Ipson",
-      "brotherImage": "HeartZip",
-      "imageSide": "right"
-    }
-  ]
+  "profile": {
+    "name": "typicode"
+  }
 }
