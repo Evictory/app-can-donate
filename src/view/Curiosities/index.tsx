@@ -15,9 +15,9 @@ const FAQ: React.FC = () => {
   const navigation = useNavigation();
   const curiosities = [
     { description: 'Sabiq eu  o eu...', image: 'hehe' },
-    { description: 'JLJKLKJ eu...', image: 'SS' },
-    { description: 'ASDASD o eu...', image: 'AA' },
-    { description: 'MAIS UM.', image: 'BB' },
+    { description: 'Você sabia que...', image: 'SS' },
+    { description: 'A quantidade de doadores no brasil...', image: 'AA' },
+    { description: 'Essa poderia ser engraçada', image: 'BB' },
   ];
   const [curiosity, setCuriosity] = useState<Curiosity>(curiosities[0]);
 
