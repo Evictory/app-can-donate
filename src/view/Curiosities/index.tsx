@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
+
+import api from '../../services/api';
+
 import NavButton from '../../components/NavButton';
 import Title from '../../components/Title';
 import CardInfo from '../../components/CardInfo';
@@ -13,25 +16,31 @@ interface Curiosity {
 
 const FAQ: React.FC = () => {
   const navigation = useNavigation();
-  const curiosities = [
-    { description: 'Sabiq eu  o eu...', image: 'hehe' },
-    { description: 'JLJKLKJ eu...', image: 'SS' },
-    { description: 'ASDASD o eu...', image: 'AA' },
-    { description: 'MAIS UM.', image: 'BB' },
-  ];
-  const [curiosity, setCuriosity] = useState<Curiosity>(curiosities[0]);
+  const [curiosities, setCuriosities] = useState<Curiosity[]>([]);
+  const [curiosity, setCuriosity] = useState<Curiosity>({} as Curiosity);
 
-  function changeCuriosity(next: number): void {
+  useEffect(() => {
+    async function loadCuriosities(): Promise<void> {
+      await api.get('curiosities').then((response) => {
+        setCuriosities(response.data);
+        setCuriosity(response.data[0]);
+      });
+    }
+
+    loadCuriosities();
+  }, []);
+
+  const changeCuriosity = (next: number) => {
     setCuriosity(curiosities[next]);
-  }
+  };
 
-  function setRandomNumber(): void {
+  const setRandomNumber = () => {
     let min = Math.ceil(0);
     let max = Math.floor(curiosities.length);
     let nextNumber = Math.floor(Math.random() * (max - min)) + min;
 
     changeCuriosity(nextNumber);
-  }
+  };
 
   return (
     <>

@@ -12,6 +12,7 @@ export const LineItens = styled.View`
   flex-direction: row;
   height: 140px;
   margin-bottom: 10px;
+  width: 340px;
 `;
 
 export const ImageContainer = styled.View`
