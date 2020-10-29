@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { v4 as uuidv4 } from 'uuid';
 
 import NavItem from '../../components/NavItem';
 import BackgroundImage from '../../assets/BackgroundMenu.png';
@@ -23,8 +24,8 @@ const Links: React.FC = () => {
           {validPaths.map((item) => {
             return (
               <>
-                <Menu>
-                  <Icon>{item.icon}</Icon>
+                <Menu key={uuidv4()}>
+                  <Icon key={uuidv4()}>{item.icon}</Icon>
                   <NavItem
                     key={item.link}
                     onPress={() => navigation.navigate(item.link)}>

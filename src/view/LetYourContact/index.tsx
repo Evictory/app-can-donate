@@ -1,12 +1,19 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import api from '../../services/api';
 
 import NavButton from '../../components/NavButton';
 import Title from '../../components/Title';
 import Input from '../../components/Input';
 
 import { Container, LabelText, Button, ButtonText } from './styles';
+
+interface LetContactFormData {
+  name: string;
+  email: string;
+  contact: string;
+}
 
 const LetYourContact: React.FC = () => {
   const navigation = useNavigation();
@@ -15,17 +22,18 @@ const LetYourContact: React.FC = () => {
   const [contact, onChangeContact] = useState('');
   const [formSubitted, onSubmit] = useState('');
 
-  const sendData = () => {
-    let data = {
-      name,
-      email,
-      contact,
-    };
+  const handleSubmit = useCallback(async (data: LetContactFormData) => {
     console.log(data);
-    onSubmit('Dados enviados com sucesso!');
-    console.log(formSubitted);
-    clearData();
-  };
+    try {
+      await api.post('userData', JSON.stringify(data));
+
+      onSubmit('Dados enviados com sucesso!');
+      clearData();
+    } catch (e) {
+      console.log('error', e);
+      onSubmit(e);
+    }
+  }, []);
 
   const clearData = () => {
     onChangeName('');
@@ -55,7 +63,7 @@ const LetYourContact: React.FC = () => {
           value={contact}
           placeholder="Pode ser o celular ou fixo ;)"
         />
-        <Button onPress={() => sendData()}>
+        <Button onPress={() => handleSubmit({ name, email, contact })}>
           <ButtonText>Enviar dados</ButtonText>
         </Button>
       </Container>

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import HeartSmile from '../../assets/HeartSmile.png';
+import api from '../../services/api';
 
+import HeartSmile from '../../assets/HeartSmile.png';
 import NavButton from '../../components/NavButton';
 
 import {
@@ -16,36 +17,24 @@ import {
   CardInfoWhite,
 } from './styles';
 
-// interface InfoMessages {
-//   description: string;
-//   step: number;
-//   imageSide: string;
-// }
+interface InfoMessages {
+  description: string;
+  step: number;
+}
 
 const IwantToDonate: React.FC = () => {
   const navigation = useNavigation();
-  const infoMessages = [
-    {
-      description: 'Lorem Ipson',
-      step: 1,
-    },
-    {
-      description: 'Juao Ipson',
-      step: 2,
-    },
-    {
-      description: 'Juao asdsa',
-      step: 3,
-    },
-    {
-      description: 'Juao sss',
-      step: 4,
-    },
-    {
-      description: 'Juao dddd',
-      step: 5,
-    },
-  ];
+  const [messages, setMessages] = useState<InfoMessages[]>([]);
+
+  useEffect(() => {
+    async function loadMessages(): Promise<void> {
+      await api.get('infoMessagesStep').then((response) => {
+        setMessages(response.data);
+      });
+    }
+
+    loadMessages();
+  }, []);
 
   const renderLine = ({ item }: any) => {
     const card = (
@@ -66,6 +55,7 @@ const IwantToDonate: React.FC = () => {
       </>
     );
   };
+
   return (
     <>
       <Container>
@@ -75,7 +65,7 @@ const IwantToDonate: React.FC = () => {
         </StepInfo>
         <SecondaryTitle>Veja só como é fácil ser doador</SecondaryTitle>
         <FlatList
-          data={infoMessages}
+          data={messages}
           renderItem={renderLine}
           keyExtractor={(item) => item.description}
         />
