@@ -9,6 +9,7 @@ export const Container = styled(RectButton)`
 
 export const ItemText = styled.Text`
   font-size: 20px;
+  font-weight: bold;
   margin-left: 5px;
 `;
 

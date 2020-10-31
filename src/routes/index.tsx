@@ -1,6 +1,5 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import Home from '../view/Home/index';
 import WhoCanDonate from '../view/WhoCanDonate';
 import Links from '../view/Links';
 import Contact from '../view/Contact';
@@ -14,7 +13,7 @@ const Stack = createStackNavigator();
 const Routes: React.FC = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Home"
+      initialRouteName="Navegue por aqui"
       screenOptions={{
         headerStyle: {
           backgroundColor: '#C7141A',
@@ -24,14 +23,13 @@ const Routes: React.FC = () => {
           fontWeight: 'bold',
         },
       }}>
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Links" component={Links} />
-      <Stack.Screen name="Contact" component={Contact} />
-      <Stack.Screen name="Curiosities" component={Curiosities} />
-      <Stack.Screen name="FAQ" component={FAQ} />
-      <Stack.Screen name="LetYourContact" component={LetYourContact} />
-      <Stack.Screen name="IwantToDonate" component={IwantToDonate} />
-      <Stack.Screen name="WhoCanDonate" component={WhoCanDonate} />
+      <Stack.Screen name="Navegue por aqui" component={Links} />
+      <Stack.Screen name="Desenvolvedores" component={Contact} />
+      <Stack.Screen name="Curiosidades" component={Curiosities} />
+      <Stack.Screen name="Dúvidas frequentes" component={FAQ} />
+      <Stack.Screen name="Deixe seu contato!" component={LetYourContact} />
+      <Stack.Screen name="Quero doar!" component={IwantToDonate} />
+      <Stack.Screen name="Quem pode doar?" component={WhoCanDonate} />
     </Stack.Navigator>
   );
 };

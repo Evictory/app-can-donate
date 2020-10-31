@@ -10,8 +10,9 @@ import CardInfo from '../../components/CardInfo';
 import { Container, Button, ButtonText } from './styles';
 
 interface Curiosity {
+  id: number;
   description: string;
-  image: string;
+  order: string;
 }
 
 const FAQ: React.FC = () => {
@@ -21,7 +22,7 @@ const FAQ: React.FC = () => {
 
   useEffect(() => {
     async function loadCuriosities(): Promise<void> {
-      await api.get('curiosities').then((response) => {
+      await api.get('/curiosity').then((response) => {
         setCuriosities(response.data);
         setCuriosity(response.data[0]);
       });
@@ -51,7 +52,7 @@ const FAQ: React.FC = () => {
           <ButtonText>Quero ver outra!</ButtonText>
         </Button>
       </Container>
-      <NavButton onPress={() => navigation.navigate('FAQ')}>
+      <NavButton onPress={() => navigation.navigate('Dúvidas frequentes')}>
         Dúvidas frequentes
       </NavButton>
     </>

@@ -12,7 +12,9 @@ const WhoCanDonate: React.FC = () => {
       <Container>
         <Title>Dúvidas frequentes</Title>
       </Container>
-      <NavButton onPress={() => navigation.navigate('Home')}>Home</NavButton>
+      <NavButton onPress={() => navigation.navigate('Desenvolvedores')}>
+        Veja os desenvolvedores
+      </NavButton>
     </>
   );
 };
