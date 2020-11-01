@@ -19,7 +19,8 @@ export const QuestionContainer = styled.View`
   background-color: #c7141a;
   border-radius: 15px;
   justify-content: center;
-  height: 33px;
+  height: 60px;
+  padding: 12px;
   width: 294px;
 `;
 

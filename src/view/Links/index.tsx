@@ -35,7 +35,6 @@ const Links: React.FC = () => {
       children: 'Dúvidas frequentes',
       icon: QuestionPhoto,
     },
-    { link: 'Desenvolvedores', children: 'Contato', icon: BeehiveHeartPhoto },
     {
       link: 'Depoimento',
       children: 'Deixe seu depoimento',
@@ -46,6 +45,7 @@ const Links: React.FC = () => {
       children: 'Veja os depoimentos',
       icon: FormPhoto,
     },
+    { link: 'Desenvolvedores', children: 'Contato', icon: BeehiveHeartPhoto },
   ];
 
   return (

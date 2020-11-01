@@ -29,7 +29,7 @@ const IwantToDonate: React.FC = () => {
 
   useEffect(() => {
     async function loadMessages(): Promise<void> {
-      await api.get('infoMessagesStep').then((response) => {
+      await api.get('step').then((response) => {
         setMessages(response.data);
       });
     }

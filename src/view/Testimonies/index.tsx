@@ -10,48 +10,78 @@ import Answer from '../../components/AnswerFaq';
 import {
   Container,
   CardContainer,
-  QuestionContainer,
-  QuestionText,
+  TestimonyContainer,
+  TestimonyText,
   HandleOpenCard,
+  DeleteContainer,
+  DeleteText,
 } from './styles';
 
-interface Question {
-  question: string;
-  answer: string;
-  is_visible: boolean;
+interface Testimony {
+  id: number;
+  wrap_description: string;
+  description: string;
 }
 
 const Testimonies: React.FC = () => {
-  const [questions, setQuestions] = useState<Question[]>([]);
-  const [selectedQuestion, setSelectedQuestion] = useState<string>('');
+  const [testimonies, setTestimonies] = useState<Testimony[]>([]);
+  const [selectedTestimony, setSelectedTestimony] = useState<string>('');
 
   useEffect(() => {
-    async function loadQuestions(): Promise<void> {
-      await api.get('/faq').then((response) => {
-        setQuestions(response.data);
+    async function loadTestimony(): Promise<void> {
+      await api.get('/testimony').then((response) => {
+        let updatedData = wrapText(response.data);
+
+        setTestimonies(updatedData);
       });
     }
 
-    loadQuestions();
+    loadTestimony();
   }, []);
 
-  const renderQuestion = ({ item }: any) => {
-    const question = (
-      <QuestionContainer>
-        <QuestionText key={item.question}>{item.question}</QuestionText>
-      </QuestionContainer>
+  const handleDeleteTestimony = async (id: number) => {
+    console.log('ID', id);
+    await api.delete(`/testimony/${id}`).then(() => {
+      var newTestimonies = testimonies.filter(function fn(item) {
+        return item.id !== id;
+      });
+
+      setTestimonies(newTestimonies);
+    });
+  };
+
+  const wrapText = (data: Testimony[]): Testimony[] => {
+    data.forEach((element) => {
+      element.wrap_description = element.description.substring(0, 20) + '...';
+    });
+
+    return data;
+  };
+
+  const renderTestimony = ({ item }: any) => {
+    const testimony = (
+      <TestimonyContainer>
+        <TestimonyText key={item.wrap_description}>
+          {item.wrap_description}
+        </TestimonyText>
+        <DeleteContainer>
+          <DeleteText onPress={() => handleDeleteTestimony(item.id)}>
+            X
+          </DeleteText>
+        </DeleteContainer>
+      </TestimonyContainer>
     );
-    const answer = <Answer key={item.answer}>{item.answer}</Answer>;
+    const answer = <Answer key={item.description}>{item.description}</Answer>;
 
     return (
       <>
         <HandleOpenCard
-          key={item.question}
-          onPress={() => setSelectedQuestion(item.question)}>
-          <CardContainer key={item.question}>
-            {item.question === selectedQuestion
-              ? [question, answer]
-              : [question]}
+          key={item.description}
+          onPress={() => setSelectedTestimony(item.description)}>
+          <CardContainer key={item.description}>
+            {item.description === selectedTestimony
+              ? [testimony, answer]
+              : [testimony]}
           </CardContainer>
         </HandleOpenCard>
       </>
@@ -62,12 +92,12 @@ const Testimonies: React.FC = () => {
   return (
     <>
       <Container>
-        <Title>Dúvidas frequentes</Title>
+        <Title>Veja os depoimentos</Title>
         <FlatList
-          data={questions}
-          renderItem={renderQuestion}
-          keyExtractor={(item) => item.question}
-          extraData={selectedQuestion}
+          data={testimonies}
+          renderItem={renderTestimony}
+          keyExtractor={(item) => item.description}
+          extraData={selectedTestimony}
         />
       </Container>
       <NavButton onPress={() => navigation.navigate('Desenvolvedores')}>

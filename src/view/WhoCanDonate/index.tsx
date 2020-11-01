@@ -28,7 +28,7 @@ const WhoCanDonate: React.FC = () => {
 
   useEffect(() => {
     async function loadMessages(): Promise<void> {
-      await api.get('/infoMessages').then((response) => {
+      await api.get('/faqinfo').then((response) => {
         setMessages(response.data);
       });
     }

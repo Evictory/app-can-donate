@@ -14,17 +14,27 @@ export const CardContainer = styled.View`
   padding: 5px;
 `;
 
-export const QuestionContainer = styled.View`
+export const TestimonyContainer = styled.View`
   align-items: center;
   background-color: #c7141a;
   border-radius: 15px;
-  justify-content: center;
+  flex-direction: row;
   height: 33px;
   width: 294px;
 `;
 
-export const QuestionText = styled.Text`
+export const TestimonyText = styled.Text`
   color: #f2ece9;
+  margin-left: 20px;
+  width: 240px;
 `;
 
 export const HandleOpenCard = styled.TouchableWithoutFeedback``;
+
+export const DeleteContainer = styled.TouchableWithoutFeedback``;
+
+export const DeleteText = styled.Text`
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+`;

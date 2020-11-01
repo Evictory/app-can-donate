@@ -16,13 +16,13 @@ import {
 } from './styles';
 
 interface Question {
-  question: string;
+  description: string;
   answer: string;
   is_visible: boolean;
 }
 
 const WhoCanDonate: React.FC = () => {
-  const [questions, setQuestions] = useState<Question[]>([]);
+  const [descriptions, setQuestions] = useState<Question[]>([]);
   const [selectedQuestion, setSelectedQuestion] = useState<string>('');
 
   useEffect(() => {
@@ -36,9 +36,9 @@ const WhoCanDonate: React.FC = () => {
   }, []);
 
   const renderQuestion = ({ item }: any) => {
-    const question = (
+    const description = (
       <QuestionContainer>
-        <QuestionText key={item.question}>{item.question}</QuestionText>
+        <QuestionText key={item.description}>{item.description}</QuestionText>
       </QuestionContainer>
     );
     const answer = <Answer key={item.answer}>{item.answer}</Answer>;
@@ -46,12 +46,12 @@ const WhoCanDonate: React.FC = () => {
     return (
       <>
         <HandleOpenCard
-          key={item.question}
-          onPress={() => setSelectedQuestion(item.question)}>
-          <CardContainer key={item.question}>
-            {item.question === selectedQuestion
-              ? [question, answer]
-              : [question]}
+          key={item.description}
+          onPress={() => setSelectedQuestion(item.description)}>
+          <CardContainer key={item.description}>
+            {item.description === selectedQuestion
+              ? [description, answer]
+              : [description]}
           </CardContainer>
         </HandleOpenCard>
       </>
@@ -64,9 +64,9 @@ const WhoCanDonate: React.FC = () => {
       <Container>
         <Title>Dúvidas frequentes</Title>
         <FlatList
-          data={questions}
+          data={descriptions}
           renderItem={renderQuestion}
-          keyExtractor={(item) => item.question}
+          keyExtractor={(item) => item.description}
           extraData={selectedQuestion}
         />
       </Container>

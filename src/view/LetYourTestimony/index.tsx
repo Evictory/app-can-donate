@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { View, KeyboardAvoidingView } from 'react-native';
+import { View } from 'react-native';
 import api from '../../services/api';
 
 import NavButton from '../../components/NavButton';
@@ -10,14 +10,13 @@ import Input from '../../components/Input';
 import { Container, LabelText, Button, ButtonText } from './styles';
 
 interface LetYourTestimony {
-  name: string;
-  testimony: string;
+  description: string;
 }
 
 const LetYourTestimony: React.FC = () => {
   const navigation = useNavigation();
   const [name, onChangeName] = useState('');
-  const [testimony, onChangeTestimony] = useState('');
+  const [description, onChangeTestimony] = useState('');
   const [formSubitted, onSubmit] = useState('');
 
   const handleSubmit = useCallback(async (data: LetYourTestimony) => {
@@ -41,7 +40,7 @@ const LetYourTestimony: React.FC = () => {
     <>
       <Container>
         <View>
-          <Title>Quem tal nos deixar seu testemunho?</Title>
+          <Title>Compartilhe sua experiência! Deixe um depoimento...</Title>
         </View>
         <LabelText>Qual é o seu nome?</LabelText>
         <Input
@@ -56,12 +55,12 @@ const LetYourTestimony: React.FC = () => {
             multiline={true}
             numberOfLines={10}
             onChangeText={(text) => onChangeTestimony(text)}
-            value={testimony}
+            value={description}
             placeholder="Inspire-se..."
           />
         </View>
 
-        <Button onPress={() => handleSubmit({ name, testimony })}>
+        <Button onPress={() => handleSubmit({ description })}>
           <ButtonText>Enviar depoimento :)</ButtonText>
         </Button>
       </Container>

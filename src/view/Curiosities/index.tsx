@@ -47,7 +47,7 @@ const FAQ: React.FC = () => {
     <>
       <Container>
         <Title>Olha só que interessante...</Title>
-        <CardInfo>{curiosity.description}</CardInfo>
+        <CardInfo style={{ fontSize: 18 }}>{curiosity.description}</CardInfo>
         <Button onPress={() => setRandomNumber()}>
           <ButtonText>Quero ver outra!</ButtonText>
         </Button>
