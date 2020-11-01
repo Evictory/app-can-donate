@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import api from '../../services/api';
 
@@ -12,20 +11,21 @@ import { Container, LabelText, Button, ButtonText } from './styles';
 interface LetContactFormData {
   name: string;
   email: string;
-  contact: string;
+  phone: number | string;
 }
 
 const LetYourContact: React.FC = () => {
   const navigation = useNavigation();
   const [name, onChangeName] = useState('');
   const [email, onChangeEmail] = useState('');
-  const [contact, onChangeContact] = useState('');
+  const [phone, onChangePhone] = useState('');
   const [formSubitted, onSubmit] = useState('');
 
   const handleSubmit = useCallback(async (data: LetContactFormData) => {
-    console.log(data);
+    data.phone = Number(data.phone);
+
     try {
-      await api.post('userData', JSON.stringify(data));
+      await api.post('contact', data);
 
       onSubmit('Dados enviados com sucesso!');
       clearData();
@@ -38,7 +38,7 @@ const LetYourContact: React.FC = () => {
   const clearData = () => {
     onChangeName('');
     onChangeEmail('');
-    onChangeContact('');
+    onChangePhone('');
   };
 
   return (
@@ -59,15 +59,15 @@ const LetYourContact: React.FC = () => {
         />
         <LabelText>Número para contato</LabelText>
         <Input
-          onChangeText={(text) => onChangeContact(text)}
-          value={contact}
+          onChangeText={(text) => onChangePhone(text)}
+          value={phone}
           placeholder="Pode ser o celular ou fixo ;)"
         />
-        <Button onPress={() => handleSubmit({ name, email, contact })}>
+        <Button onPress={() => handleSubmit({ name, email, phone })}>
           <ButtonText>Enviar dados</ButtonText>
         </Button>
       </Container>
-      <NavButton onPress={() => navigation.navigate('Curiosities')}>
+      <NavButton onPress={() => navigation.navigate('Curiosidades')}>
         Curiosidades
       </NavButton>
     </>

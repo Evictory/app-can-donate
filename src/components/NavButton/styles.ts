@@ -3,10 +3,9 @@ import styled from 'styled-components/native';
 
 export const Container = styled(RectButton)`
   align-items: center;
-  justify-content: center;
-
-  height: 45px;
   background-color: #b40d1a;
+  justify-content: center;
+  height: 45px;
   width: 100%;
 `;
 

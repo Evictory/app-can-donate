@@ -3,7 +3,8 @@ import { FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import api from '../../services/api';
 
-import HeartSmile from '../../assets/HeartSmile.png';
+import { HeartSmilePhoto } from '../../assets/index';
+
 import NavButton from '../../components/NavButton';
 
 import {
@@ -28,7 +29,7 @@ const IwantToDonate: React.FC = () => {
 
   useEffect(() => {
     async function loadMessages(): Promise<void> {
-      await api.get('infoMessagesStep').then((response) => {
+      await api.get('step').then((response) => {
         setMessages(response.data);
       });
     }
@@ -61,7 +62,7 @@ const IwantToDonate: React.FC = () => {
       <Container>
         <MainTitle>Algúem deve estar sorrindo!</MainTitle>
         <StepInfo>
-          <CardImage source={HeartSmile} />
+          <CardImage source={HeartSmilePhoto} />
         </StepInfo>
         <SecondaryTitle>Veja só como é fácil ser doador</SecondaryTitle>
         <FlatList
@@ -70,7 +71,7 @@ const IwantToDonate: React.FC = () => {
           keyExtractor={(item) => item.description}
         />
       </Container>
-      <NavButton onPress={() => navigation.navigate('LetYourContact')}>
+      <NavButton onPress={() => navigation.navigate('Deixe seu contato!')}>
         Deixe seu contato
       </NavButton>
     </>

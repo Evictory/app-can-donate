@@ -2,6 +2,14 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { v4 as uuidv4 } from 'uuid';
 
+import {
+  BeehiveHeartPhoto,
+  HeartSmilePhoto,
+  HeartZipPhoto,
+  QuestionPhoto,
+  FormPhoto,
+} from '../../assets/index';
+
 import NavItem from '../../components/NavItem';
 import BackgroundImage from '../../assets/BackgroundMenu.png';
 
@@ -10,24 +18,47 @@ import { Container, Icon, Menu, Background } from './styles';
 const Links: React.FC = () => {
   const navigation = useNavigation();
   const validPaths = [
-    { link: 'WhoCanDonate', children: 'Quem pode doar?', icon: 'Test1' },
-    { link: 'Curiosities', children: 'Curiosidades', icon: 'Test2' },
-    { link: 'IwantToDonate', children: 'Quero doar', icon: 'Test3' },
-    { link: 'LetYourContact', children: 'Deixe seu contato', icon: 'Test4' },
-    { link: 'FAQ', children: 'Dúvidas frequentes', icon: 'Test5' },
-    { link: 'Contact', children: 'Contato', icon: 'Test6' },
+    {
+      link: 'Quem pode doar?',
+      children: 'Quem pode doar?',
+      icon: BeehiveHeartPhoto,
+    },
+    { link: 'Curiosidades', children: 'Curiosidades', icon: HeartSmilePhoto },
+    { link: 'Quero doar!', children: 'Quero doar', icon: HeartZipPhoto },
+    {
+      link: 'Deixe seu contato!',
+      children: 'Deixe seu contato',
+      icon: FormPhoto,
+    },
+    {
+      link: 'Dúvidas frequentes',
+      children: 'Dúvidas frequentes',
+      icon: QuestionPhoto,
+    },
+    {
+      link: 'Depoimento',
+      children: 'Deixe seu depoimento',
+      icon: HeartSmilePhoto,
+    },
+    {
+      link: 'Depoimentos',
+      children: 'Veja os depoimentos',
+      icon: FormPhoto,
+    },
+    { link: 'Desenvolvedores', children: 'Contato', icon: BeehiveHeartPhoto },
   ];
+
   return (
     <>
       <Background source={BackgroundImage}>
         <Container>
-          {validPaths.map((item) => {
+          {validPaths.map((item, index) => {
             return (
               <>
-                <Menu key={uuidv4()}>
-                  <Icon key={uuidv4()}>{item.icon}</Icon>
+                <Menu key={`${uuidv4()}${index}`}>
+                  <Icon source={item.icon} key={`${uuidv4()}${index}`} />
                   <NavItem
-                    key={item.link}
+                    key={`${uuidv4()}${item.link}`}
                     onPress={() => navigation.navigate(item.link)}>
                     {item.children}
                   </NavItem>
