@@ -21,7 +21,7 @@ interface Question {
   is_visible: boolean;
 }
 
-const WhoCanDonate: React.FC = () => {
+const Testimonies: React.FC = () => {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [selectedQuestion, setSelectedQuestion] = useState<string>('');
 
@@ -70,11 +70,11 @@ const WhoCanDonate: React.FC = () => {
           extraData={selectedQuestion}
         />
       </Container>
-      <NavButton onPress={() => navigation.navigate('Depoimento')}>
-        Deixe seu depoimento!
+      <NavButton onPress={() => navigation.navigate('Desenvolvedores')}>
+        Veja os desenvolvedores
       </NavButton>
     </>
   );
 };
 
-export default WhoCanDonate;
+export default Testimonies;

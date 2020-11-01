@@ -7,6 +7,8 @@ import Curiosities from '../view/Curiosities';
 import FAQ from '../view/FAQ';
 import IwantToDonate from '../view/IwantToDonate';
 import LetYourContact from '../view/LetYourContact';
+import LetYourTestimony from '../view/LetYourTestimony';
+import Testimonies from '../view/Testimonies';
 
 const Stack = createStackNavigator();
 
@@ -30,6 +32,8 @@ const Routes: React.FC = () => {
       <Stack.Screen name="Deixe seu contato!" component={LetYourContact} />
       <Stack.Screen name="Quero doar!" component={IwantToDonate} />
       <Stack.Screen name="Quem pode doar?" component={WhoCanDonate} />
+      <Stack.Screen name="Depoimento" component={LetYourTestimony} />
+      <Stack.Screen name="Depoimentos" component={Testimonies} />
     </Stack.Navigator>
   );
 };

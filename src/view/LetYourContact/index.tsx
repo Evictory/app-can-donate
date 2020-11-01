@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import api from '../../services/api';
 
@@ -13,7 +12,6 @@ interface LetContactFormData {
   name: string;
   email: string;
   phone: number | string;
-  data: number;
 }
 
 const LetYourContact: React.FC = () => {
@@ -25,7 +23,6 @@ const LetYourContact: React.FC = () => {
 
   const handleSubmit = useCallback(async (data: LetContactFormData) => {
     data.phone = Number(data.phone);
-    console.log(data);
 
     try {
       await api.post('contact', data);
@@ -66,10 +63,7 @@ const LetYourContact: React.FC = () => {
           value={phone}
           placeholder="Pode ser o celular ou fixo ;)"
         />
-        <Button
-          onPress={() =>
-            handleSubmit({ name, email, phone, data: 1604178786317 })
-          }>
+        <Button onPress={() => handleSubmit({ name, email, phone })}>
           <ButtonText>Enviar dados</ButtonText>
         </Button>
       </Container>
