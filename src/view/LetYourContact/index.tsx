@@ -12,7 +12,8 @@ import { Container, LabelText, Button, ButtonText } from './styles';
 interface LetContactFormData {
   name: string;
   email: string;
-  phone: string;
+  phone: number | string;
+  data: number;
 }
 
 const LetYourContact: React.FC = () => {
@@ -23,9 +24,11 @@ const LetYourContact: React.FC = () => {
   const [formSubitted, onSubmit] = useState('');
 
   const handleSubmit = useCallback(async (data: LetContactFormData) => {
+    data.phone = Number(data.phone);
     console.log(data);
+
     try {
-      await api.post('userData', JSON.stringify(data));
+      await api.post('contact', data);
 
       onSubmit('Dados enviados com sucesso!');
       clearData();
@@ -63,7 +66,10 @@ const LetYourContact: React.FC = () => {
           value={phone}
           placeholder="Pode ser o celular ou fixo ;)"
         />
-        <Button onPress={() => handleSubmit({ name, email, phone })}>
+        <Button
+          onPress={() =>
+            handleSubmit({ name, email, phone, data: 1604178786317 })
+          }>
           <ButtonText>Enviar dados</ButtonText>
         </Button>
       </Container>

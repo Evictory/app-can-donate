@@ -22,7 +22,7 @@ const FAQ: React.FC = () => {
 
   useEffect(() => {
     async function loadCuriosities(): Promise<void> {
-      await api.get('/curiosity').then((response) => {
+      await api.get('curiosity').then((response) => {
         setCuriosities(response.data);
         setCuriosity(response.data[0]);
       });

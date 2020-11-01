@@ -46,9 +46,9 @@ const Links: React.FC = () => {
             return (
               <>
                 <Menu key={`${uuidv4()}${index}`}>
-                  <Icon source={item.icon} key={uuidv4()} />
+                  <Icon source={item.icon} key={`${uuidv4()}${index}`} />
                   <NavItem
-                    key={item.link}
+                    key={`${uuidv4()}${item.link}`}
                     onPress={() => navigation.navigate(item.link)}>
                     {item.children}
                   </NavItem>
